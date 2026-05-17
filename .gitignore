@@ -1,0 +1,28 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+
+# local tooling, not part of the site
+.agents
+.claude
+skills-lock.json
+
+# remotion build inputs/outputs
+intro/node_modules
+intro/out
+intro/public/water.mp4
+
+# only the assets the site actually uses are tracked
+public/assets/*
+!public/assets/water
+!public/assets/intro
+!public/assets/textures
+public/assets/water/*
+!public/assets/water/water-loop-web.mp4
+!public/assets/water/water-poster.jpg
+public/assets/intro/*
+!public/assets/intro/softwave-intro.mp4
+public/assets/textures/*
+!public/assets/textures/glass-surface.jpg
