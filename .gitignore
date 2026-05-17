@@ -21,8 +21,5 @@ public/assets/*
 public/assets/water/*
 !public/assets/water/water-bg.mp4
 !public/assets/water/water-poster.jpg
-!public/assets/water/water-drop.png
-!public/assets/water/water-drop-clear.png
 public/assets/intro/*
 !public/assets/intro/softwave-intro.mp4
-!public/assets/intro/splash.webm
