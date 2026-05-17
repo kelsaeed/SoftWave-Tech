@@ -8,7 +8,7 @@ export default function About() {
         <p className="kicker">Who we are</p>
         <h2>A two-person studio that ships.</h2>
         <p className="section-lead">
-          We started Softwave Tech because most software feels heavier than it
+          We started SoftWaveTech because most software feels heavier than it
           needs to be. We keep teams small, decisions fast, and the work honest.
         </p>
       </Reveal>

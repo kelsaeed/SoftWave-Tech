@@ -80,7 +80,7 @@ const Wordmark: React.FC = () => {
             letterSpacing: "-0.02em",
           }}
         >
-          Softwave<span style={{ color: "#6fe3df" }}>Tech</span>
+          SoftWave<span style={{ color: "#6fe3df" }}>Tech</span>
         </div>
         <div
           style={{

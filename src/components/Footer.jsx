@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <span>Softwave Tech</span>
+      <span>SoftWaveTech</span>
       <span>&copy; {year}</span>
     </footer>
   )

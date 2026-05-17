@@ -9,7 +9,7 @@ export default function Hero() {
           software that just works.
         </h1>
         <p className="lead">
-          Softwave Tech is a small studio by Khaled and Hams. We design and
+          SoftWaveTech is a small studio by Khaled and Hams. We design and
           ship web and mobile products without the noise.
         </p>
         <div className="hero-actions">

@@ -11,6 +11,17 @@ function easeInOut(t) {
   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
 }
 
+// little bubbles that drift up inside the droplet
+function Bubbles() {
+  return (
+    <>
+      <i className="bubble" />
+      <i className="bubble" />
+      <i className="bubble" />
+    </>
+  )
+}
+
 export default function Nav() {
   const dropRef = useRef(null)
   const labelRef = useRef(null)
@@ -85,7 +96,7 @@ export default function Nav() {
     <>
       <header className="nav">
         <a href="#top" className="brand">
-          Softwave<span>Tech</span>
+          SoftWave<span>Tech</span>
         </a>
         <nav>
           {links.map((l) => (
@@ -95,6 +106,7 @@ export default function Nav() {
               className="drop-link"
               onClick={(e) => goTo(e, l.id, l.label)}
             >
+              <Bubbles />
               <span>{l.label}</span>
             </a>
           ))}
@@ -103,6 +115,7 @@ export default function Nav() {
 
       <div className="drop-layer" aria-hidden="true">
         <div ref={dropRef} className="falling-drop">
+          <Bubbles />
           <span ref={labelRef} />
         </div>
         <div ref={splashRef} className="splash">
