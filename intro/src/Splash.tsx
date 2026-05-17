@@ -43,7 +43,7 @@ const Drop: React.FC<{ i: number }> = ({ i }) => {
 
   return (
     <Img
-      src={staticFile("water-drop.png")}
+      src={staticFile("water-drop-clear.png")}
       style={{
         position: "absolute",
         left: x - size / 2,

@@ -104,23 +104,113 @@ a {
   position: relative;
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 70px;
-  background: url('/assets/water/water-drop.png') center / contain no-repeat;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 104px;
+  height: 132px;
+  background: url('/assets/water/water-drop-clear.png') center / contain no-repeat;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  animation: dropFloat 4.5s ease-in-out infinite;
+  transition: filter 0.3s ease;
+}
+
+.drop-link:nth-child(2) {
+  animation-delay: -0.6s;
+}
+
+.drop-link:nth-child(3) {
+  animation-delay: -1.2s;
+}
+
+.drop-link:nth-child(4) {
+  animation-delay: -1.9s;
 }
 
 .drop-link span {
-  margin-top: 12px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #0a2330;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.45);
+  transform: translateY(20px);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #06303d;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85), 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .drop-link:hover {
-  transform: translateY(-3px);
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.5)) brightness(1.15);
+}
+
+@keyframes dropFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* bubbles drifting up inside the droplet */
+.bubble {
+  position: absolute;
+  left: 50%;
+  bottom: 26%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 34% 30%,
+    rgba(255, 255, 255, 0.95) 0 14%,
+    rgba(120, 200, 215, 0.55) 32%,
+    rgba(6, 54, 70, 0.6) 70%,
+    rgba(5, 44, 58, 0.4) 86%,
+    transparent 92%
+  );
+  box-shadow: 0 0 5px rgba(4, 38, 52, 0.55);
+  opacity: 0;
+  z-index: 1;
+  animation: bubbleUp 3.6s ease-in infinite;
+}
+
+.bubble:nth-child(1) {
+  margin-left: -14px;
+  animation-delay: -0.3s;
+}
+
+.bubble:nth-child(2) {
+  margin-left: 3px;
+  width: 9px;
+  height: 9px;
+  animation-duration: 4.4s;
+  animation-delay: -1.7s;
+}
+
+.bubble:nth-child(3) {
+  margin-left: 14px;
+  width: 17px;
+  height: 17px;
+  animation-duration: 5s;
+  animation-delay: -2.9s;
+}
+
+.drop-link span,
+.falling-drop span {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes bubbleUp {
+  0% {
+    transform: translate(-50%, 8px) scale(0.5);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.9;
+  }
+  78% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -54px) scale(1);
+    opacity: 0;
+  }
 }
 
 /* falling drop + splash */
@@ -136,22 +226,22 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  width: 96px;
-  height: 120px;
+  width: 132px;
+  height: 168px;
   display: grid;
   place-items: center;
-  background: url('/assets/water/water-drop.png') center / contain no-repeat;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
+  background: url('/assets/water/water-drop-clear.png') center / contain no-repeat;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.45));
   opacity: 0;
   will-change: transform;
 }
 
 .falling-drop span {
-  margin-top: 16px;
-  font-size: 0.82rem;
+  transform: translateY(26px);
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #0a2330;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  color: #06303d;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85), 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .splash {
@@ -516,9 +606,11 @@ a {
   padding: 30px clamp(20px, 5vw, 56px) 50px;
   display: flex;
   justify-content: space-between;
-  color: var(--muted);
-  font-size: 0.9rem;
-  border-top: 1px solid var(--glass-border);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(2, 10, 16, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 /* intro overlay */
