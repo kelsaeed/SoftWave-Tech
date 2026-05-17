@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-// Soft water ripples that follow the mouse. Canvas so it stays smooth.
+// Bright water ripples that follow the mouse. Canvas so it stays smooth.
 export default function CursorTrail() {
   const canvasRef = useRef(null)
 
@@ -26,30 +26,43 @@ export default function CursorTrail() {
     function onMove(e) {
       const dx = e.clientX - lastX
       const dy = e.clientY - lastY
-      // only spawn after the pointer has actually moved a little
-      if (dx * dx + dy * dy < 90) return
+      if (dx * dx + dy * dy < 36) return
       lastX = e.clientX
       lastY = e.clientY
-      ripples.push({ x: e.clientX, y: e.clientY, r: 4, life: 1 })
-      if (ripples.length > 24) ripples.shift()
+      ripples.push({ x: e.clientX, y: e.clientY, r: 5, life: 1 })
+      if (ripples.length > 28) ripples.shift()
     }
 
     function frame() {
       ctx.clearRect(0, 0, width, height)
+      ctx.shadowColor = 'rgba(150, 245, 245, 0.9)'
+
       for (let i = ripples.length - 1; i >= 0; i--) {
         const p = ripples[i]
-        p.r += 1.4
-        p.life -= 0.022
+        p.r += 2
+        p.life -= 0.016
         if (p.life <= 0) {
           ripples.splice(i, 1)
           continue
         }
+
+        // bright glowing ring
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(120, 224, 224, ${p.life * 0.5})`
-        ctx.lineWidth = 1.5
+        ctx.strokeStyle = `rgba(170, 248, 247, ${p.life * 0.95})`
+        ctx.lineWidth = 2.5
+        ctx.shadowBlur = 14
         ctx.stroke()
+
+        // soft inner glow that fades fast
+        if (p.life > 0.55) {
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.r * 0.4, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(190, 250, 250, ${(p.life - 0.55) * 0.5})`
+          ctx.fill()
+        }
       }
+
       raf = requestAnimationFrame(frame)
     }
 
