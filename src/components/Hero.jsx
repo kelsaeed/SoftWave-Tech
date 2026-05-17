@@ -1,18 +1,6 @@
 export default function Hero() {
   return (
     <section className="hero" id="top">
-      <video
-        className="hero-video"
-        src="/assets/water/water-loop-web.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/assets/water/water-poster.jpg"
-      />
-      <div className="hero-shade" />
-
       <div className="hero-inner">
         <p className="eyebrow">Software studio</p>
         <h1>

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import WaterBackground from './components/WaterBackground.jsx'
+import CursorTrail from './components/CursorTrail.jsx'
 import Intro from './components/Intro.jsx'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
@@ -20,6 +22,8 @@ export default function App() {
 
   return (
     <>
+      <WaterBackground />
+      <CursorTrail />
       {!introDone && <Intro onFinish={finishIntro} />}
       <Nav />
       <main>
