@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import GlassCard from './GlassCard.jsx'
 
 const steps = [
   {
@@ -28,11 +29,11 @@ export default function Work() {
 
       <Reveal className="steps">
         {steps.map((s) => (
-          <div key={s.no} className="step">
+          <GlassCard key={s.no} className="step">
             <span className="step-no">{s.no}</span>
             <h3>{s.title}</h3>
             <p>{s.text}</p>
-          </div>
+          </GlassCard>
         ))}
       </Reveal>
     </section>
