@@ -25,9 +25,10 @@ const Wordmark: React.FC = () => {
     extrapolateRight: "clamp",
   });
 
+  // fade the wordmark out at the end so we're left with just the water
   const out = interpolate(
     frame,
-    [durationInFrames - 14, durationInFrames],
+    [durationInFrames - 22, durationInFrames - 6],
     [0, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
@@ -54,28 +55,41 @@ const Wordmark: React.FC = () => {
     >
       <div
         style={{
+          position: "absolute",
+          width: 1200,
+          height: 460,
+          opacity,
+          background:
+            "radial-gradient(closest-side, rgba(6,16,24,0.5), rgba(6,16,24,0.22) 55%, transparent 75%)",
+          filter: "blur(8px)",
+        }}
+      />
+      <div
+        style={{
           opacity,
           transform: `translateY(${y}px) scale(${scale})`,
           textAlign: "center",
+          textShadow: "0 4px 18px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.5)",
         }}
       >
         <div
           style={{
             fontSize: 118,
             fontWeight: 700,
-            color: "#e9f1f3",
+            color: "#ffffff",
             letterSpacing: "-0.02em",
           }}
         >
-          Softwave<span style={{ color: "#5fd6d2" }}>Tech</span>
+          Softwave<span style={{ color: "#6fe3df" }}>Tech</span>
         </div>
         <div
           style={{
             height: 2,
             width: lineWidth,
-            background: "#5fd6d2",
+            background: "#6fe3df",
             margin: "28px auto 0",
             borderRadius: 2,
+            boxShadow: "0 0 16px rgba(111,227,223,0.7)",
           }}
         />
         <div
@@ -84,7 +98,7 @@ const Wordmark: React.FC = () => {
             fontSize: 22,
             letterSpacing: "0.42em",
             textTransform: "uppercase",
-            color: "#9fb2bb",
+            color: "#dff1f2",
             opacity: tagOpacity,
           }}
         >
@@ -96,19 +110,10 @@ const Wordmark: React.FC = () => {
 };
 
 export const SoftwaveIntro: React.FC = () => {
-  const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
-
-  // fade to the site background colour at the end for a seamless hand-off
-  const toSite = interpolate(
-    frame,
-    [durationInFrames - 16, durationInFrames],
-    [0, 1],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
-  );
+  const { fps } = useVideoConfig();
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#060a10" }}>
+    <AbsoluteFill style={{ backgroundColor: "#0a1622" }}>
       <Sequence>
         <Video
           src={staticFile("water.mp4")}
@@ -118,18 +123,15 @@ export const SoftwaveIntro: React.FC = () => {
         />
       </Sequence>
 
+      {/* light, optimistic vignette - just enough for the wordmark to read */}
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(to bottom, rgba(6,10,16,0.5), rgba(6,10,16,0.8)), radial-gradient(900px 600px at 50% 42%, rgba(95,214,210,0.12), transparent 60%)",
+            "radial-gradient(120% 95% at 50% 45%, transparent 38%, rgba(6,14,22,0.42) 100%)",
         }}
       />
 
       <Wordmark />
-
-      <AbsoluteFill
-        style={{ backgroundColor: "#060a10", opacity: toSite }}
-      />
     </AbsoluteFill>
   );
 };
