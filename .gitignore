@@ -14,12 +14,17 @@ intro/node_modules
 intro/out
 intro/public
 
-# only the assets the site actually uses are tracked
+# only the optimized assets the site actually serves are tracked
+# (original high-bitrate sources live in media-source/, tracked but never deployed)
 public/assets/*
 !public/assets/water
 !public/assets/intro
 public/assets/water/*
-!public/assets/water/water-bg.mp4
+!public/assets/water/water-bg.optimized.mp4
+!public/assets/water/water-bg.webm
 !public/assets/water/water-poster.jpg
+!public/assets/water/water-poster.webp
+!public/assets/water/water-poster.avif
 public/assets/intro/*
-!public/assets/intro/softwave-intro.mp4
+!public/assets/intro/softwave-intro.optimized.mp4
+!public/assets/intro/softwave-intro.webm

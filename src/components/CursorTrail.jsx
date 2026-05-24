@@ -70,10 +70,23 @@ export default function CursorTrail() {
     window.addEventListener('mousemove', onMove)
     window.addEventListener('resize', resize)
 
+    // Stop the animation loop entirely while the tab is hidden so it does no
+    // work in the background, then restart it cleanly when the tab is shown.
+    function onVisibility() {
+      if (document.hidden) {
+        cancelAnimationFrame(raf)
+        raf = 0
+      } else if (!raf) {
+        raf = requestAnimationFrame(frame)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('mousemove', onMove)
       window.removeEventListener('resize', resize)
+      document.removeEventListener('visibilitychange', onVisibility)
     }
   }, [])
 

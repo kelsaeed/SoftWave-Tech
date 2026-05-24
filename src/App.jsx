@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import WaterBackground from './components/WaterBackground.jsx'
 import CursorTrail from './components/CursorTrail.jsx'
+import ScrollProgress from './components/ScrollProgress.jsx'
 import Intro from './components/Intro.jsx'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
+import Marquee from './components/Marquee.jsx'
 import About from './components/About.jsx'
 import Services from './components/Services.jsx'
 import Work from './components/Work.jsx'
@@ -23,11 +25,14 @@ export default function App() {
   return (
     <>
       <WaterBackground />
+      <div className="grain" aria-hidden="true" />
       <CursorTrail />
+      <ScrollProgress />
       {!introDone && <Intro onFinish={finishIntro} />}
       <Nav />
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Services />
         <Work />

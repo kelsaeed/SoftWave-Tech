@@ -1,41 +1,46 @@
 import Reveal from './Reveal.jsx'
-import GlassCard from './GlassCard.jsx'
 
 const steps = [
   {
     no: '01',
     title: 'Talk it through',
-    text: 'A short call to understand the problem and what success looks like.',
+    text: 'A short call to understand the problem and what success actually looks like.',
   },
   {
     no: '02',
     title: 'Plan small',
-    text: 'A clear scope and a first version we can put in front of real users.',
+    text: 'A clear scope and a first version we can put in front of real users fast.',
   },
   {
     no: '03',
     title: 'Build & ship',
-    text: 'We work in short cycles so you always see progress, not promises.',
+    text: 'Short cycles, so you always see real progress — not promises or status decks.',
   },
 ]
 
 export default function Work() {
   return (
     <section className="section" id="work">
-      <Reveal>
+      <Reveal className="section-head">
         <p className="kicker">How we work</p>
-        <h2>Simple by default.</h2>
+        <h2>
+          Simple <span className="grad">by default.</span>
+        </h2>
+        <p className="section-lead">
+          No heavy process, no surprises. Three steps from first call to something
+          live you can use.
+        </p>
       </Reveal>
 
-      <Reveal className="steps">
-        {steps.map((s) => (
-          <GlassCard key={s.no} className="step">
-            <span className="step-no">{s.no}</span>
+      <div className="timeline">
+        {steps.map((s, i) => (
+          <Reveal key={s.no} className="step" delay={i * 130}>
+            <div className="step__no">{s.no}</div>
             <h3>{s.title}</h3>
             <p>{s.text}</p>
-          </GlassCard>
+          </Reveal>
         ))}
-      </Reveal>
+      </div>
     </section>
   )
 }

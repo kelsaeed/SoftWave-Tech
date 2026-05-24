@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
-// Fades a section in the first time it scrolls into view.
-export default function useReveal() {
+// Fades/slides an element in the first time it scrolls into view.
+export default function useReveal({ threshold = 0.15 } = {}) {
   const ref = useRef(null)
   const [shown, setShown] = useState(false)
 
@@ -16,12 +16,12 @@ export default function useReveal() {
           io.disconnect()
         }
       },
-      { threshold: 0.15 },
+      { threshold },
     )
 
     io.observe(el)
     return () => io.disconnect()
-  }, [])
+  }, [threshold])
 
   return [ref, shown]
 }

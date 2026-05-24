@@ -1,19 +1,12 @@
-import { useRef } from 'react'
+import useTilt from '../hooks/useTilt.js'
 
-// A frosted panel with a soft highlight that follows the cursor.
-export default function GlassCard({ children, className = '' }) {
-  const ref = useRef(null)
-
-  function move(e) {
-    const el = ref.current
-    if (!el) return
-    const r = el.getBoundingClientRect()
-    el.style.setProperty('--mx', `${e.clientX - r.left}px`)
-    el.style.setProperty('--my', `${e.clientY - r.top}px`)
-  }
+// A frosted panel that tilts in 3D toward the cursor and carries a soft
+// highlight that follows the pointer.
+export default function GlassCard({ children, className = '', tilt = 7 }) {
+  const { ref, onMove, onLeave } = useTilt(tilt)
 
   return (
-    <div ref={ref} className={`glass ${className}`} onMouseMove={move}>
+    <div ref={ref} className={`glass ${className}`} onMouseMove={onMove} onMouseLeave={onLeave}>
       {children}
     </div>
   )
