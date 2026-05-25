@@ -26,7 +26,8 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="section" id="services">
+    <section className="section" data-nav="services">
+      <span id="services" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
         <p className="kicker">What we do</p>
         <h2>

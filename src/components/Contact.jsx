@@ -3,7 +3,8 @@ import GlassCard from './GlassCard.jsx'
 
 export default function Contact() {
   return (
-    <section className="section" id="contact">
+    <section className="section section--center" data-nav="contact">
+      <span id="contact" className="section-anchor" aria-hidden="true" />
       <Reveal dir="scale">
         <GlassCard className="contact-card" tilt={3}>
           <p className="kicker">Get in touch</p>
@@ -15,7 +16,7 @@ export default function Contact() {
             reply within a day.
           </p>
           <div className="contact-actions">
-            <a className="btn" href="mailto:khaledawad552002@gmail.com">
+            <a className="btn btn--email" href="mailto:khaledawad552002@gmail.com">
               khaledawad552002@gmail.com
               <span className="btn__arrow">→</span>
             </a>

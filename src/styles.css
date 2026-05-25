@@ -26,6 +26,7 @@
   --radius: 24px;
   --radius-sm: 16px;
   --nav-height: 76px; /* fixed-nav clearance for anchor scrolling */
+  --anchor-offset: calc(var(--nav-height) + 24px); /* nav + breathing room */
 
   /* type */
   --font-display: 'Sora', system-ui, sans-serif;
@@ -44,17 +45,31 @@
 
 html {
   scroll-behavior: smooth;
-  /* Clip horizontal overflow at the viewport level. The off-canvas mobile menu
-     is position:fixed and parked off-screen with translateX(100%); fixed
-     elements are positioned to the viewport, so body's overflow-x:hidden can't
-     clip them — this can. Single-column layout never needs horizontal scroll. */
+  /* Clip horizontal overflow at the viewport. `clip` is preferred over `hidden`
+     here: it clips the position:fixed off-canvas menu (which body's overflow
+     can't reach) WITHOUT creating a scroll container — so it won't break
+     scroll-behavior / scroll-margin-top (the fixed-nav anchor offset), which a
+     nested scroller would. `hidden` stays as a fallback for old browsers. */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
-/* Every nav anchor target clears the fixed nav. scroll-margin-top on the target
-   is the most reliable cross-browser way to offset hash-link landings; using it
-   alone (no scroll-padding-top) keeps the offset to exactly one nav height. */
-section[id] {
+/* Hash links target an invisible sentinel placed at each section's CONTENT
+   start (inside the section's top padding), not the padded section top — so
+   clicking a nav item lands on the kicker/heading just below the fixed nav,
+   never on the empty wave/padding area above it. The offset = nav + 24px gap. */
+.section-anchor {
+  display: block;
+  height: 0;
+  scroll-margin-top: var(--anchor-offset);
+}
+
+/* in a centered section the sentinel sits at the section top, out of flow, so
+   the flex-centered card stays centered after the hash jump (offset = nav only) */
+.section--center .section-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
   scroll-margin-top: var(--nav-height);
 }
 
@@ -66,6 +81,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
@@ -378,7 +394,9 @@ html {
   font-size: 0.94rem;
 }
 
-.nav__links a {
+/* text-link styling applies to the real nav links only — never the CTA button
+   (.btn), which keeps its own dark ink text and has no underline */
+.nav__links a:not(.btn) {
   position: relative;
   color: var(--muted-2);
   font-weight: 500;
@@ -386,7 +404,7 @@ html {
   transition: color 0.25s ease;
 }
 
-.nav__links a::after {
+.nav__links a:not(.btn)::after {
   content: '';
   position: absolute;
   left: 0;
@@ -400,13 +418,13 @@ html {
   transition: transform 0.3s var(--ease-out);
 }
 
-.nav__links a:hover,
-.nav__links a.active {
+.nav__links a:not(.btn):hover,
+.nav__links a:not(.btn).active {
   color: var(--ink);
 }
 
-.nav__links a:hover::after,
-.nav__links a.active::after {
+.nav__links a:not(.btn):hover::after,
+.nav__links a:not(.btn).active::after {
   transform: scaleX(1);
 }
 
@@ -458,7 +476,10 @@ html {
   font-size: 0.95rem;
   cursor: pointer;
   border: 0;
-  background: linear-gradient(120deg, var(--accent-bright), var(--accent) 45%, var(--accent-deep));
+  /* kept in the bright half of the aqua ramp so the dark ink text stays
+     high-contrast across the whole button (the old --accent-deep end dropped
+     to ~3.6:1, which read as washed-out) */
+  background: linear-gradient(120deg, var(--accent-bright), var(--accent));
   color: var(--accent-ink);
   box-shadow: 0 12px 30px rgba(111, 227, 223, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease;
@@ -557,7 +578,8 @@ html {
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  /* scales smoothly across laptops/desktops without dominating short screens */
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
   font-weight: 800;
   max-width: 16ch;
   text-shadow: 0 4px 40px rgba(2, 12, 18, 0.6);
@@ -565,7 +587,7 @@ html {
   overflow-wrap: break-word;
 }
 
-/* word-by-word entrance */
+/* word-by-word entrance (line 1) */
 .word {
   display: inline-block;
   opacity: 0;
@@ -578,6 +600,35 @@ html {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Hero headline hover-reveal (line 2): ghosted + blurred at rest, each
+   character sharpens and glows aqua on hover, staggered left-to-right.
+   Readable at rest, fully announced to screen readers via the h1 aria-label. */
+.hero-reveal {
+  color: var(--accent);
+}
+
+.reveal-word {
+  display: inline-block;
+}
+
+.hero-reveal .rc {
+  display: inline-block;
+  opacity: 0.3;
+  filter: blur(2px);
+  transform: translateY(0.08em);
+  transition: opacity 0.5s var(--ease-out), filter 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out), text-shadow 0.5s ease;
+  transition-delay: calc(var(--i, 0) * 26ms);
+}
+
+.hero-title:hover .hero-reveal .rc,
+.hero-title:focus-within .hero-reveal .rc {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  text-shadow: 0 0 16px rgba(111, 227, 223, 0.5);
 }
 
 .lead {
@@ -712,7 +763,20 @@ html {
   z-index: 1;
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(80px, 11vw, 150px) clamp(20px, 5vw, 56px);
+  /* tighter vertical rhythm: spacious but no huge empty bands on short laptops,
+     and the heading + first card row land together after nav jumps */
+  padding: clamp(64px, 8vw, 116px) clamp(20px, 5vw, 56px);
+}
+
+/* Contact lands as a composed, centered "hero card" view. The card is centered
+   in a viewport-tall section; the anchor sentinel is taken out of flow (below)
+   so the centering survives the hash jump. */
+.section--center {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(48px, 9vh, 96px);
 }
 
 .section-head {
@@ -730,7 +794,7 @@ html {
 }
 
 .section h2 {
-  font-size: clamp(2rem, 4.6vw, 3.1rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
   font-weight: 700;
   max-width: 18ch;
 }
@@ -846,7 +910,7 @@ html {
    About — people + stats
    ========================================================= */
 .about-grid {
-  margin-top: 48px;
+  margin-top: clamp(28px, 3.5vw, 44px);
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 22px;
@@ -912,7 +976,7 @@ html {
    Services — bento grid
    ========================================================= */
 .bento {
-  margin-top: 48px;
+  margin-top: clamp(28px, 3.5vw, 44px);
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 18px;
@@ -943,7 +1007,7 @@ html {
    Process — timeline
    ========================================================= */
 .timeline {
-  margin-top: 52px;
+  margin-top: clamp(30px, 3.8vw, 48px);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 26px;
@@ -1172,6 +1236,31 @@ html {
   }
   .hero h1 {
     max-width: 100%;
+    font-size: clamp(2rem, 8.5vw, 3rem);
+  }
+
+  /* on small screens, slide reveals in vertically — horizontal translate can
+     push content past the right edge before the element settles */
+  .reveal[data-dir='left'],
+  .reveal[data-dir='right'] {
+    transform: translateY(26px);
+  }
+
+  /* contact: stack actions full-width and let the long email fit fully */
+  .contact-card {
+    padding: 40px 22px;
+  }
+  .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn--email {
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 0.82rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -1195,5 +1284,13 @@ html {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  /* hero line 2 shows fully and statically — no character animation */
+  .hero-reveal .rc {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    text-shadow: none !important;
+    transition: none !important;
   }
 }

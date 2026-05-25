@@ -16,7 +16,8 @@ function Figure({ end, suffix, label }) {
 
 export default function About() {
   return (
-    <section className="section" id="about">
+    <section className="section" data-nav="about">
+      <span id="about" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
         <p className="kicker">Who we are</p>
         <h2>A two-person studio that ships.</h2>

@@ -19,16 +19,18 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // highlight the link for the section currently in view
+  // highlight the link for the section currently in view. We observe the whole
+  // <section> (via data-nav) rather than the hash sentinel, so the active state
+  // tracks the full section while scrolling, not just its content-start point.
   useEffect(() => {
     const sections = links
-      .map((l) => document.getElementById(l.id))
+      .map((l) => document.querySelector(`[data-nav="${l.id}"]`))
       .filter(Boolean)
 
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id)
+          if (e.isIntersecting) setActive(e.target.dataset.nav)
         })
       },
       { rootMargin: '-45% 0px -50% 0px' },

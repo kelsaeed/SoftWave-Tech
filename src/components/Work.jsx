@@ -20,7 +20,8 @@ const steps = [
 
 export default function Work() {
   return (
-    <section className="section" id="work">
+    <section className="section" data-nav="work">
+      <span id="work" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
         <p className="kicker">How we work</p>
         <h2>
