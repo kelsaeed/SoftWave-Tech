@@ -25,6 +25,7 @@
   --max: 1140px;
   --radius: 24px;
   --radius-sm: 16px;
+  --nav-height: 76px; /* fixed-nav clearance for anchor scrolling */
 
   /* type */
   --font-display: 'Sora', system-ui, sans-serif;
@@ -43,7 +44,18 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 92px;
+  /* Clip horizontal overflow at the viewport level. The off-canvas mobile menu
+     is position:fixed and parked off-screen with translateX(100%); fixed
+     elements are positioned to the viewport, so body's overflow-x:hidden can't
+     clip them — this can. Single-column layout never needs horizontal scroll. */
+  overflow-x: hidden;
+}
+
+/* Every nav anchor target clears the fixed nav. scroll-margin-top on the target
+   is the most reliable cross-browser way to offset hash-link landings; using it
+   alone (no scroll-padding-top) keeps the offset to exactly one nav height. */
+section[id] {
+  scroll-margin-top: var(--nav-height);
 }
 
 body {
@@ -549,6 +561,8 @@ html {
   font-weight: 800;
   max-width: 16ch;
   text-shadow: 0 4px 40px rgba(2, 12, 18, 0.6);
+  /* never let a long word push past the viewport edge on narrow screens */
+  overflow-wrap: break-word;
 }
 
 /* word-by-word entrance */
