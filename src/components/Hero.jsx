@@ -5,13 +5,17 @@ const line1 = ['We', 'build', 'calm,', 'reliable']
 const line2 = 'software that just works.'
 const FULL_HEADLINE = 'We build calm, reliable software that just works.'
 
-// Line 1: words rise in once on load.
+// Line 1: words rise in once on load. The space sits *outside* the inline-block
+// word (as a real text node) so it isn't collapsed at the box edge — keeping the
+// natural gap between words instead of running them together.
 function Line1() {
   return line1.map((w, i) => (
-    <span className="word" key={w + i} style={{ animationDelay: `${0.15 + i * 0.07}s` }}>
-      {w}
+    <Fragment key={w + i}>
+      <span className="word" style={{ animationDelay: `${0.15 + i * 0.07}s` }}>
+        {w}
+      </span>
       {i < line1.length - 1 ? ' ' : ''}
-    </span>
+    </Fragment>
   ))
 }
 

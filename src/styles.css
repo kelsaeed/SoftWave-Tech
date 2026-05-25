@@ -602,8 +602,9 @@ html {
   }
 }
 
-/* Hero headline hover-reveal (line 2): ghosted + blurred at rest, each
-   character sharpens and glows aqua on hover, staggered left-to-right.
+/* Hero headline hover-reveal (line 2): a softly ghosted continuation of the
+   headline at rest — readable and intentional, not a blurry glow-mass. On hover
+   each character sharpens and glows aqua, staggered left-to-right.
    Readable at rest, fully announced to screen readers via the h1 aria-label. */
 .hero-reveal {
   color: var(--accent);
@@ -615,9 +616,9 @@ html {
 
 .hero-reveal .rc {
   display: inline-block;
-  opacity: 0.3;
-  filter: blur(2px);
-  transform: translateY(0.08em);
+  opacity: 0.5;
+  filter: blur(0.5px);
+  transform: translateY(0.05em);
   transition: opacity 0.5s var(--ease-out), filter 0.5s var(--ease-out),
     transform 0.5s var(--ease-out), text-shadow 0.5s ease;
   transition-delay: calc(var(--i, 0) * 26ms);
