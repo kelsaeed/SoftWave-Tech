@@ -1,26 +1,29 @@
 import Reveal from './Reveal.jsx'
 import GlassCard from './GlassCard.jsx'
 
+// Short copy to fit inside the hex silhouette. The longer SEO copy lives
+// in the section's lead paragraph above (and in the full-text snippets in
+// index.html meta tags).
 const services = [
   {
     icon: '⚡',
-    title: '24/7 Availability & Fast Response',
-    text: 'Always-on technical support and guaranteed response within one business day. Our software development team is available across time zones for urgent project requests, technical questions, and ongoing collaboration with clients in Egypt, MENA, and worldwide.',
+    title: '24/7 Available',
+    text: 'Response within one business day.',
   },
   {
     icon: '💬',
-    title: 'Direct Developer Communication',
-    text: 'Communicate directly with the Flutter, web, n8n, and SaaS developers actually building your software — no account managers, no intermediaries, no layers of bureaucracy. Clear technical conversations, faster decisions, and zero context lost in handoffs.',
+    title: 'Direct Comms',
+    text: 'Talk to the developer, not a manager.',
   },
   {
     icon: '🔍',
-    title: 'Transparent Pricing & Process',
-    text: 'Clear project scope, fixed-price deliverables, milestone-based billing, and zero hidden fees. Honest software development quotes with detailed line items, predictable invoicing, and full visibility into progress at every phase of the engagement.',
+    title: 'Transparent Pricing',
+    text: 'Clear scope. No hidden fees.',
   },
   {
     icon: '🛡️',
-    title: 'End-to-End Delivery & Post-Launch Support',
-    text: 'Full project ownership from initial discovery to production deployment — and beyond. We deliver tested, documented, production-ready code, plus ongoing maintenance, technical support, bug fixes, and feature updates after launch.',
+    title: 'End-to-End',
+    text: 'Discovery to launch, plus support.',
   },
 ]
 
