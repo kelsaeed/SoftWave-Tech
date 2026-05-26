@@ -32,15 +32,23 @@ export default function About() {
         <Reveal className="people" dir="left">
           <GlassCard className="person">
             <div className="person__avatar">K</div>
-            <p className="person__role">Engineering</p>
+            <p className="person__role">Mobile &amp; Web Engineering</p>
             <h3>Khaled</h3>
-            <p>Backend &amp; systems. Turns rough ideas into things that run and keep running.</p>
+            <p>
+              Flutter application specialist, building polished mobile experiences
+              end-to-end — and equally fluent on the web with HTML, CSS and
+              JavaScript.
+            </p>
           </GlassCard>
           <GlassCard className="person">
             <div className="person__avatar">H</div>
-            <p className="person__role">Product &amp; design</p>
+            <p className="person__role">Automation &amp; SaaS</p>
             <h3>Hams</h3>
-            <p>Interface &amp; product. Makes the work clear, considered and good to use.</p>
+            <p>
+              Automation specialist orchestrating n8n, Meta tooling and a wider
+              stack of platforms — and the developer behind SaaS products and
+              software systems that quietly take the heavy lifting off your plate.
+            </p>
           </GlassCard>
         </Reveal>
 

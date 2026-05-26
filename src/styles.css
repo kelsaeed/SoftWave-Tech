@@ -602,9 +602,8 @@ html {
   }
 }
 
-/* Hero headline hover-reveal (line 2): a softly ghosted continuation of the
-   headline at rest — readable and intentional, not a blurry glow-mass. On hover
-   each character sharpens and glows aqua, staggered left-to-right.
+/* Hero headline hover-reveal (line 2): ghosted + blurred at rest, each
+   character sharpens and glows aqua on hover, staggered left-to-right.
    Readable at rest, fully announced to screen readers via the h1 aria-label. */
 .hero-reveal {
   color: var(--accent);
@@ -616,9 +615,9 @@ html {
 
 .hero-reveal .rc {
   display: inline-block;
-  opacity: 0.5;
-  filter: blur(0.5px);
-  transform: translateY(0.05em);
+  opacity: 0.3;
+  filter: blur(2px);
+  transform: translateY(0.08em);
   transition: opacity 0.5s var(--ease-out), filter 0.5s var(--ease-out),
     transform 0.5s var(--ease-out), text-shadow 0.5s ease;
   transition-delay: calc(var(--i, 0) * 26ms);
@@ -924,26 +923,50 @@ html {
   gap: 18px;
 }
 
+/* Compact, lightly-frosted person cards: small footprint, more transparent
+   than the default .glass tint, with dark slate text so the identity reads
+   crisply against the ocean backdrop. */
+.person {
+  padding: 20px 22px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.28));
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #051a23;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.person h3 {
+  color: #051620;
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.person p {
+  color: #1a3a48;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
 .person__role {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--accent);
-  margin-bottom: 14px;
+  letter-spacing: 0.16em;
+  /* darker aqua reads on a light card; var(--accent) was too light here */
+  color: var(--accent-deep);
+  margin-bottom: 10px;
 }
 
 .person__avatar {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.05rem;
   color: var(--accent-ink);
   background: linear-gradient(140deg, var(--accent-bright), var(--accent-deep));
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .about-figures {

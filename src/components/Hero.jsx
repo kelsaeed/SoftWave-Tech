@@ -5,17 +5,13 @@ const line1 = ['We', 'build', 'calm,', 'reliable']
 const line2 = 'software that just works.'
 const FULL_HEADLINE = 'We build calm, reliable software that just works.'
 
-// Line 1: words rise in once on load. The space sits *outside* the inline-block
-// word (as a real text node) so it isn't collapsed at the box edge — keeping the
-// natural gap between words instead of running them together.
+// Line 1: words rise in once on load.
 function Line1() {
   return line1.map((w, i) => (
-    <Fragment key={w + i}>
-      <span className="word" style={{ animationDelay: `${0.15 + i * 0.07}s` }}>
-        {w}
-      </span>
+    <span className="word" key={w + i} style={{ animationDelay: `${0.15 + i * 0.07}s` }}>
+      {w}
       {i < line1.length - 1 ? ' ' : ''}
-    </Fragment>
+    </span>
   ))
 }
 
@@ -86,7 +82,7 @@ export default function Hero() {
             <span className="btn__arrow">→</span>
           </a>
           <a className="btn ghost" href="#work" ref={secondary}>
-            How we work
+            What we build
           </a>
         </div>
 
