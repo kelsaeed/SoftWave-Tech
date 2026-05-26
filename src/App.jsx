@@ -8,6 +8,7 @@ import Hero from './components/Hero.jsx'
 import Marquee from './components/Marquee.jsx'
 import About from './components/About.jsx'
 import WhatWeBuild from './components/WhatWeBuild.jsx'
+import WhatWeAchieved from './components/WhatWeAchieved.jsx'
 import Services from './components/Services.jsx'
 import Work from './components/Work.jsx'
 import Contact from './components/Contact.jsx'
@@ -36,6 +37,7 @@ export default function App() {
         <Marquee />
         <About />
         <WhatWeBuild />
+        <WhatWeAchieved />
         <Services />
         <Work />
         <Contact />

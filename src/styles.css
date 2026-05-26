@@ -1862,3 +1862,241 @@ html {
     justify-content: center;
   }
 }
+
+/* =========================================================
+   What We Achieved — client outcomes & case studies
+   ========================================================= */
+
+/* Notice banner explaining the placeholder state */
+.wwa-notice {
+  margin: clamp(20px, 2.5vw, 32px) auto 0;
+  max-width: 760px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(150deg, rgba(255, 195, 90, 0.16), rgba(255, 195, 90, 0.04));
+  border: 1px solid rgba(255, 195, 90, 0.35);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.wwa-notice__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.wwa-notice p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+.wwa-notice strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Case-study card grid: single column, full-width cards */
+.wwa-grid {
+  margin-top: clamp(28px, 3.5vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+.wwa-grid > * {
+  display: flex;
+}
+
+.wwa-card {
+  width: 100%;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.07)),
+    radial-gradient(150% 100% at 50% 110%, rgba(31, 127, 140, 0.2), transparent 60%);
+  padding: clamp(24px, 3vw, 36px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.wwa-card--empty {
+  /* Slightly more subdued so empty cards visually defer to filled ones later */
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    radial-gradient(150% 100% at 50% 110%, rgba(31, 127, 140, 0.12), transparent 60%);
+}
+
+.wwa-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.wwa-card__head h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.wwa-card__industry {
+  color: var(--accent-bright);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.wwa-card--empty .wwa-card__industry {
+  color: var(--muted);
+}
+
+.wwa-card__hint {
+  margin: 22px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Metric grid (three mini-charts per card) */
+.wwa-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+}
+
+.wwa-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--glass-border);
+}
+
+.wwa-metric__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--muted-2);
+  letter-spacing: 0.01em;
+}
+
+.wwa-metric__icon {
+  font-size: 1.15rem;
+}
+
+/* Bar chart: two vertical bars side by side (before / after) */
+.wwa-bars {
+  display: flex;
+  gap: 18px;
+  height: 110px;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: center;
+}
+
+.wwa-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 36px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.wwa-bar {
+  width: 100%;
+  height: var(--h, 0%);
+  border-radius: 6px 6px 2px 2px;
+  position: relative;
+  transition: height 1.4s var(--ease-out);
+}
+
+.wwa-bar--before {
+  background: linear-gradient(180deg, rgba(255, 110, 138, 0.8), rgba(180, 60, 90, 0.4));
+  box-shadow: 0 0 18px rgba(255, 110, 138, 0.35);
+}
+
+.wwa-bar--after {
+  background: linear-gradient(180deg, rgba(110, 240, 180, 0.85), rgba(50, 180, 120, 0.45));
+  box-shadow: 0 0 18px rgba(110, 240, 180, 0.45);
+}
+
+/* Empty bars: a single dashed outline placeholder showing what the chart
+   shape will look like once data lands. */
+.wwa-bar--empty {
+  height: 60%;
+  background: transparent;
+  border: 1px dashed var(--glass-border);
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+.wwa-bars--empty .wwa-bar-wrap:first-child .wwa-bar--empty {
+  height: 80%;
+}
+
+.wwa-bar__label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* Delta badge below the chart */
+.wwa-metric__delta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.wwa-metric__delta-num {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-bright);
+  text-shadow: 0 0 14px rgba(110, 240, 180, 0.5);
+  line-height: 1;
+}
+
+.wwa-metric__delta-text {
+  font-size: 0.66rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wwa-metric__delta--empty .wwa-metric__delta-num {
+  color: var(--muted);
+  text-shadow: none;
+  font-weight: 500;
+}
+
+/* Responsive: stack metrics vertically on small screens */
+@media (max-width: 720px) {
+  .wwa-metrics {
+    grid-template-columns: 1fr;
+  }
+  .wwa-card__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .wwa-notice {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
