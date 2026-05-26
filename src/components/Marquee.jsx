@@ -1,12 +1,16 @@
 const items = [
-  'Web apps',
-  'Mobile apps',
-  'APIs & backends',
-  'Interface design',
-  'Dashboards',
-  'Cross-platform',
-  'Performance',
-  'Clean code',
+  'Flutter App Development',
+  'Mobile App Development',
+  'Web Development',
+  'HTML / CSS / JavaScript',
+  'n8n Automation',
+  'Workflow Automation',
+  'SaaS Development',
+  'Custom Software',
+  'Meta API Integration',
+  'Cross-Platform Apps',
+  'API Development',
+  'Business Automation',
 ]
 
 // Infinite scrolling strip of what the studio does. The list is duplicated

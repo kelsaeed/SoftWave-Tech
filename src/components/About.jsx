@@ -19,12 +19,14 @@ export default function About() {
     <section className="section" data-nav="about">
       <span id="about" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
-        <p className="kicker">Who we are</p>
-        <h2>A two-person studio that ships.</h2>
+        <p className="kicker">About SoftWaveTech</p>
+        <h2>Software Development Studio Specializing in Mobile, Web, Automation &amp; SaaS.</h2>
         <p className="section-lead">
-          We started SoftWaveTech because most software feels heavier than it
-          needs to be. We keep teams small, decisions fast, and the work honest —
-          so you talk to the people actually building your product.
+          SoftWaveTech is a software development agency based in Egypt with
+          clients across MENA and worldwide. We deliver Flutter mobile app
+          development, custom web development, n8n workflow automation, and
+          SaaS product development — every project handled end-to-end by
+          experienced developers, with direct client-to-developer communication.
         </p>
       </Reveal>
 
@@ -32,30 +34,32 @@ export default function About() {
         <Reveal className="people" dir="left">
           <GlassCard className="person">
             <div className="person__avatar">K</div>
-            <p className="person__role">Mobile &amp; Web Engineering</p>
+            <p className="person__role">Flutter &amp; Web Development</p>
             <h3>Khaled</h3>
             <p>
-              Flutter application specialist, building polished mobile experiences
-              end-to-end — and equally fluent on the web with HTML, CSS and
-              JavaScript.
+              Flutter Mobile App Developer &amp; Web Development Specialist.
+              Builds cross-platform Flutter applications for iOS and Android,
+              and custom websites using HTML, CSS, and JavaScript with proven
+              mobile and web development expertise.
             </p>
           </GlassCard>
           <GlassCard className="person">
             <div className="person__avatar">H</div>
-            <p className="person__role">Automation &amp; SaaS</p>
+            <p className="person__role">Automation &amp; SaaS Development</p>
             <h3>Hams</h3>
             <p>
-              Automation specialist orchestrating n8n, Meta tooling and a wider
-              stack of platforms — and the developer behind SaaS products and
-              software systems that quietly take the heavy lifting off your plate.
+              n8n Automation Specialist &amp; SaaS Developer. Designs and
+              implements n8n workflow automations, Meta API integrations, and
+              custom SaaS products. Builds software systems and business
+              automation that streamline operations end-to-end.
             </p>
           </GlassCard>
         </Reveal>
 
         <Reveal className="about-figures" dir="right" delay={120}>
-          <Figure end={12} suffix="+" label="products designed & shipped" />
-          <Figure end={6} suffix=" yrs" label="combined experience" />
-          <Figure end={100} suffix="%" label="of work taken end to end" />
+          <Figure end={12} suffix="+" label="software projects delivered" />
+          <Figure end={6} suffix=" yrs" label="development experience" />
+          <Figure end={100} suffix="%" label="end-to-end project delivery" />
         </Reveal>
       </div>
     </section>

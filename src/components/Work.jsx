@@ -3,18 +3,18 @@ import Reveal from './Reveal.jsx'
 const steps = [
   {
     no: '01',
-    title: 'Talk it through',
-    text: 'A short call to understand the problem and what success actually looks like.',
+    title: 'Discovery & Requirements',
+    text: 'Initial software development consultation to define project scope, technical requirements, target platform (Flutter mobile, web, n8n automation, or SaaS), and measurable success metrics for your project.',
   },
   {
     no: '02',
-    title: 'Plan small',
-    text: 'A clear scope and a first version we can put in front of real users fast.',
+    title: 'Design & Planning',
+    text: 'Detailed project planning, software architecture design, and rapid prototyping. We deliver a minimum viable product (MVP) for early validation with real users and stakeholders.',
   },
   {
     no: '03',
-    title: 'Build & ship',
-    text: 'Short cycles, so you always see real progress — not promises or status decks.',
+    title: 'Development & Deployment',
+    text: 'Agile development cycles with regular demos and progress updates. End-to-end delivery from coding to production deployment, with ongoing technical support and maintenance.',
   },
 ]
 
@@ -23,13 +23,15 @@ export default function Work() {
     <section className="section" data-nav="work">
       <span id="work" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
-        <p className="kicker">How we work</p>
+        <p className="kicker">Our Development Process</p>
         <h2>
-          Simple <span className="grad">by default.</span>
+          Software Development Workflow <span className="grad">Built to Deliver.</span>
         </h2>
         <p className="section-lead">
-          No heavy process, no surprises. Three steps from first call to something
-          live you can use.
+          Our software development process is built for transparency, fast
+          iteration, and reliable delivery. Three structured phases take your
+          Flutter app, web, n8n automation, or SaaS project from initial
+          discovery to live production deployment.
         </p>
       </Reveal>
 

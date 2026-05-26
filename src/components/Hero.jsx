@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import useMagnetic from '../hooks/useMagnetic.js'
 
-const line1 = ['We', 'build', 'calm,', 'reliable']
-const line2 = 'software that just works.'
-const FULL_HEADLINE = 'We build calm, reliable software that just works.'
+const line1 = ['Flutter', 'Apps,', 'Web', 'Development,']
+const line2 = 'n8n Automation & SaaS Solutions.'
+const FULL_HEADLINE = 'Flutter Apps, Web Development, n8n Automation & SaaS Solutions.'
 
 // Line 1: words rise in once on load.
 function Line1() {
@@ -39,9 +39,9 @@ function Line2() {
 }
 
 const stats = [
-  { num: '2', label: 'people, zero noise' },
-  { num: '~1d', label: 'usual reply time' },
-  { num: '100%', label: 'shipped, not promised' },
+  { num: '2', label: 'development specialists' },
+  { num: '~1d', label: 'project response time' },
+  { num: '100%', label: 'end-to-end delivery' },
 ]
 
 export default function Hero() {
@@ -53,7 +53,7 @@ export default function Hero() {
       <div className="hero-inner">
         <p className="eyebrow">
           <b />
-          Software studio
+          Software Development Studio — Egypt &amp; Global
         </p>
 
         {/* aria-label carries the full sentence for screen readers; the visual
@@ -71,9 +71,11 @@ export default function Hero() {
         </h1>
 
         <p className="lead">
-          SoftWaveTech is a small studio by Khaled and Hams. We design and ship
-          web and mobile products without the noise — fast to talk to, clear to
-          work with, built to last.
+          SoftWaveTech is a professional software development studio delivering
+          Flutter mobile app development, custom web development (HTML, CSS,
+          JavaScript), n8n workflow automation, and SaaS product development.
+          Based in Egypt, serving clients across MENA and worldwide with
+          end-to-end software delivery.
         </p>
 
         <div className="hero-actions">
@@ -81,7 +83,7 @@ export default function Hero() {
             Start a project
             <span className="btn__arrow">→</span>
           </a>
-          <a className="btn ghost" href="#work" ref={secondary}>
+          <a className="btn ghost" href="#what-we-build" ref={secondary}>
             What we build
           </a>
         </div>

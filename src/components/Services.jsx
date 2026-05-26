@@ -3,24 +3,24 @@ import GlassCard from './GlassCard.jsx'
 
 const services = [
   {
-    icon: '🖥️',
-    title: 'Web apps',
-    text: 'Dashboards, tools and sites built to be fast, accessible and easy to maintain.',
-  },
-  {
     icon: '📱',
-    title: 'Mobile apps',
-    text: 'Cross-platform apps that feel native and stay smooth.',
+    title: 'Flutter Mobile App Development',
+    text: 'Cross-platform Flutter app development for iOS and Android. Native-feel performance, custom UI implementation, and complete mobile app development from prototype to App Store and Google Play launch.',
   },
   {
-    icon: '🔌',
-    title: 'APIs & backends',
-    text: 'The systems behind the product — clean, documented, reliable.',
+    icon: '🖥️',
+    title: 'Web Development (HTML, CSS, JavaScript)',
+    text: 'Custom web development services using modern HTML, CSS, and JavaScript. Responsive websites, landing pages, web applications, and dashboards optimized for performance, SEO, and accessibility.',
   },
   {
-    icon: '🎯',
-    title: 'Interface design',
-    text: 'Layouts and flows that make complex things feel simple and obvious.',
+    icon: '⚙️',
+    title: 'n8n Workflow Automation',
+    text: 'Professional n8n automation services and workflow consulting. Custom n8n workflow automation, Meta API integrations, and reliable business automation that connects your tools and scales with your operations.',
+  },
+  {
+    icon: '🚀',
+    title: 'SaaS & Custom Software Development',
+    text: 'SaaS development and custom software solutions for businesses. We architect and build SaaS platforms, internal business tools, dashboards, and software systems tailored to your operational requirements.',
   },
 ]
 
@@ -29,10 +29,16 @@ export default function Services() {
     <section className="section" data-nav="services">
       <span id="services" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
-        <p className="kicker">What we do</p>
+        <p className="kicker">Our Services</p>
         <h2>
-          Everything your product needs, <span className="grad">nothing it doesn’t.</span>
+          Software Development Services for Mobile, Web, <span className="grad">Automation &amp; SaaS.</span>
         </h2>
+        <p className="section-lead">
+          Full-stack software development services covering Flutter mobile app
+          development, custom web development, n8n workflow automation, and
+          SaaS product engineering. Choose a single service or work with us
+          end-to-end across the entire delivery cycle.
+        </p>
       </Reveal>
 
       <div className="bento">

@@ -1,5 +1,6 @@
 const links = [
   { id: 'about', label: 'About' },
+  { id: 'what-we-build', label: 'What We Build' },
   { id: 'services', label: 'Services' },
   { id: 'work', label: 'Process' },
   { id: 'contact', label: 'Contact' },
@@ -15,7 +16,9 @@ export default function Footer() {
           <div className="footer__brand">
             SoftWave<span>Tech</span>
           </div>
-          <p className="footer__tag">Calm, reliable software — by Khaled &amp; Hams.</p>
+          <p className="footer__tag">
+            Flutter App Development &middot; Web Development &middot; n8n Automation &middot; SaaS Solutions — Egypt &amp; Global.
+          </p>
         </div>
 
         <nav className="footer__links">
