@@ -3,24 +3,24 @@ import GlassCard from './GlassCard.jsx'
 
 const services = [
   {
-    icon: '📱',
-    title: 'Flutter Mobile App Development',
-    text: 'Cross-platform Flutter app development for iOS and Android. Native-feel performance, custom UI implementation, and complete mobile app development from prototype to App Store and Google Play launch.',
+    icon: '⚡',
+    title: '24/7 Availability & Fast Response',
+    text: 'Always-on technical support and guaranteed response within one business day. Our software development team is available across time zones for urgent project requests, technical questions, and ongoing collaboration with clients in Egypt, MENA, and worldwide.',
   },
   {
-    icon: '🖥️',
-    title: 'Web Development (HTML, CSS, JavaScript)',
-    text: 'Custom web development services using modern HTML, CSS, and JavaScript. Responsive websites, landing pages, web applications, and dashboards optimized for performance, SEO, and accessibility.',
+    icon: '💬',
+    title: 'Direct Developer Communication',
+    text: 'Communicate directly with the Flutter, web, n8n, and SaaS developers actually building your software — no account managers, no intermediaries, no layers of bureaucracy. Clear technical conversations, faster decisions, and zero context lost in handoffs.',
   },
   {
-    icon: '⚙️',
-    title: 'n8n Workflow Automation',
-    text: 'Professional n8n automation services and workflow consulting. Custom n8n workflow automation, Meta API integrations, and reliable business automation that connects your tools and scales with your operations.',
+    icon: '🔍',
+    title: 'Transparent Pricing & Process',
+    text: 'Clear project scope, fixed-price deliverables, milestone-based billing, and zero hidden fees. Honest software development quotes with detailed line items, predictable invoicing, and full visibility into progress at every phase of the engagement.',
   },
   {
-    icon: '🚀',
-    title: 'SaaS & Custom Software Development',
-    text: 'SaaS development and custom software solutions for businesses. We architect and build SaaS platforms, internal business tools, dashboards, and software systems tailored to your operational requirements.',
+    icon: '🛡️',
+    title: 'End-to-End Delivery & Post-Launch Support',
+    text: 'Full project ownership from initial discovery to production deployment — and beyond. We deliver tested, documented, production-ready code, plus ongoing maintenance, technical support, bug fixes, and feature updates after launch.',
   },
 ]
 
@@ -29,15 +29,16 @@ export default function Services() {
     <section className="section" data-nav="services">
       <span id="services" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
-        <p className="kicker">Our Services</p>
+        <p className="kicker">Why Choose SoftWaveTech</p>
         <h2>
-          Software Development Services for Mobile, Web, <span className="grad">Automation &amp; SaaS.</span>
+          Built for Reliable Software <span className="grad">Development Partnerships.</span>
         </h2>
         <p className="section-lead">
-          Full-stack software development services covering Flutter mobile app
-          development, custom web development, n8n workflow automation, and
-          SaaS product engineering. Choose a single service or work with us
-          end-to-end across the entire delivery cycle.
+          Beyond the technical work — Flutter apps, web development, n8n
+          automation, and SaaS — every project we take on comes with the
+          commitments that actually matter to clients: clear communication,
+          transparent pricing, fast response times, and full end-to-end
+          delivery from discovery through long-term support.
         </p>
       </Reveal>
 
