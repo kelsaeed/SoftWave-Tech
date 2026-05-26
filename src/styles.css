@@ -1230,23 +1230,51 @@ html {
 /* =========================================================
    Process — timeline
    ========================================================= */
-/* Process timeline — flex row with arrows between each step. The arrows
-   live in the DOM (inserted by Work.jsx) as siblings of .step, so the
-   flexbox handles spacing naturally and they reorder cleanly when wrapped
-   or scrolled on mobile. */
+/* Process timeline — an auto-scrolling marquee of project phases with
+   arrows between every step. The outer .timeline is the masked viewport
+   (overflow:hidden + edge fade-out). The inner .timeline__track is the
+   moving strip; it holds two copies of the steps + arrows so that at
+   translateX(-50%) the second copy lines up with where the first started,
+   producing a perfectly seamless infinite loop. */
 .timeline {
   margin-top: clamp(30px, 3.8vw, 48px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: clamp(6px, 1vw, 14px);
   position: relative;
-  flex-wrap: nowrap;
+  overflow: hidden;
+  /* Soft fade-out at both edges so steps appear/disappear instead of
+     getting hard-cropped at the section boundary. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-/* The old static connecting line is replaced by per-step arrow elements. */
+/* Old static connecting line — no longer needed; the per-step arrows
+   handle the visual flow now. */
 .timeline::before {
   display: none;
+}
+
+.timeline__track {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: clamp(10px, 1.4vw, 18px);
+  animation: timeline-flow 45s linear infinite;
+  will-change: transform;
+}
+
+@keyframes timeline-flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Pause when the user wants to read a step */
+.timeline:hover .timeline__track,
+.timeline:focus-within .timeline__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__track {
+    animation: none;
+  }
 }
 
 .step__arrow {
@@ -1285,9 +1313,8 @@ html {
 }
 
 .step {
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 160px;
+  flex: 0 0 auto;
+  width: clamp(130px, 13vw, 170px);
   text-align: center;
   position: relative;
 }
@@ -1301,6 +1328,7 @@ html {
   font-size: 1.05rem;
   margin: 0;
   letter-spacing: -0.015em;
+  white-space: nowrap;
 }
 
 /* No body text in the steps anymore — kept for safety in case it's ever
@@ -1484,30 +1512,18 @@ html {
     grid-template-columns: 1fr;
   }
 
-  /* Process timeline on mobile: stay horizontal, scroll-snap each step
-     into view as the user swipes. */
-  .timeline {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: visible;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 14px;
-    margin-left: calc(-1 * clamp(20px, 5vw, 56px));
-    margin-right: calc(-1 * clamp(20px, 5vw, 56px));
-    padding-left: clamp(20px, 5vw, 56px);
-    padding-right: clamp(20px, 5vw, 56px);
-    gap: 10px;
-  }
+  /* Process timeline on mobile: keep the auto-scrolling marquee (no
+     manual swipe needed — items auto-cycle). Just shrink each step and
+     speed up the loop slightly so the motion feels right at this size. */
   .step {
-    flex: 0 0 110px;
-    max-width: 110px;
-    scroll-snap-align: start;
+    width: 115px;
   }
   .step__arrow {
-    flex: 0 0 auto;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+  }
+  .timeline__track {
+    animation-duration: 32s;
+    gap: 10px;
   }
   .hero h1 {
     max-width: 100%;

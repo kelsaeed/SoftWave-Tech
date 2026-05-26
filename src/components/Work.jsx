@@ -21,19 +21,24 @@ export default function Work() {
         </h2>
       </Reveal>
 
-      <div className="timeline">
-        {steps.map((s, i) => (
-          <Fragment key={s.no}>
-            <Reveal className="step" delay={i * 110}>
-              <div className="step__no">{s.no}</div>
-              <h3>{s.title}</h3>
-            </Reveal>
-            {i < steps.length - 1 && (
+      {/* Auto-scrolling marquee of the project lifecycle. The steps array
+          is rendered twice (with a trailing arrow after EACH step,
+          including the last) so the inner track has perfect symmetry —
+          translating it by -50% lines the second copy up exactly where
+          the first copy began, giving a seamless infinite loop. */}
+      <Reveal className="timeline">
+        <div className="timeline__track">
+          {[...steps, ...steps].map((s, i) => (
+            <Fragment key={i}>
+              <div className="step">
+                <div className="step__no">{s.no}</div>
+                <h3>{s.title}</h3>
+              </div>
               <span className="step__arrow" aria-hidden="true">→</span>
-            )}
-          </Fragment>
-        ))}
-      </div>
+            </Fragment>
+          ))}
+        </div>
+      </Reveal>
     </section>
   )
 }
