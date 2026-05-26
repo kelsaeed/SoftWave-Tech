@@ -1233,8 +1233,9 @@ html {
 .timeline {
   margin-top: clamp(30px, 3.8vw, 48px);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  /* 5 main phases — wide horizontal flow */
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(14px, 1.6vw, 22px);
   position: relative;
 }
 
@@ -1271,11 +1272,23 @@ html {
   margin-bottom: 22px;
 }
 
-.step h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+.step {
+  text-align: center;
 }
 
+.step__no {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step h3 {
+  font-size: 1.15rem;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* No body text in the steps anymore — kept for safety in case it's ever
+   re-introduced */
 .step p {
   color: var(--muted-2);
 }
