@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import Reveal from './Reveal.jsx'
 
 // Main phases of every project — titles only.
@@ -22,10 +23,15 @@ export default function Work() {
 
       <div className="timeline">
         {steps.map((s, i) => (
-          <Reveal key={s.no} className="step" delay={i * 110}>
-            <div className="step__no">{s.no}</div>
-            <h3>{s.title}</h3>
-          </Reveal>
+          <Fragment key={s.no}>
+            <Reveal className="step" delay={i * 110}>
+              <div className="step__no">{s.no}</div>
+              <h3>{s.title}</h3>
+            </Reveal>
+            {i < steps.length - 1 && (
+              <span className="step__arrow" aria-hidden="true">→</span>
+            )}
+          </Fragment>
         ))}
       </div>
     </section>

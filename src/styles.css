@@ -1230,24 +1230,36 @@ html {
 /* =========================================================
    Process — timeline
    ========================================================= */
+/* Process timeline — flex row with arrows between each step. The arrows
+   live in the DOM (inserted by Work.jsx) as siblings of .step, so the
+   flexbox handles spacing naturally and they reorder cleanly when wrapped
+   or scrolled on mobile. */
 .timeline {
   margin-top: clamp(30px, 3.8vw, 48px);
-  display: grid;
-  /* 5 main phases — wide horizontal flow */
-  grid-template-columns: repeat(5, 1fr);
-  gap: clamp(14px, 1.6vw, 22px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 14px);
   position: relative;
+  flex-wrap: nowrap;
 }
 
+/* The old static connecting line is replaced by per-step arrow elements. */
 .timeline::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: 6%;
-  right: 6%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-deep), var(--accent), var(--accent-deep), transparent);
-  opacity: 0.45;
+  display: none;
+}
+
+.step__arrow {
+  flex: 0 0 auto;
+  /* match the number circle's height so the arrow vertically centers on
+     the circle's midline */
+  line-height: 60px;
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(111, 227, 223, 0.55);
+  user-select: none;
+  align-self: flex-start;
 }
 
 .step {
@@ -1273,7 +1285,11 @@ html {
 }
 
 .step {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 160px;
   text-align: center;
+  position: relative;
 }
 
 .step__no {
@@ -1282,7 +1298,7 @@ html {
 }
 
 .step h3 {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   margin: 0;
   letter-spacing: -0.015em;
 }
@@ -1464,12 +1480,34 @@ html {
     z-index: 1;
   }
   .people,
-  .bento,
-  .timeline {
+  .bento {
     grid-template-columns: 1fr;
   }
-  .timeline::before {
-    display: none;
+
+  /* Process timeline on mobile: stay horizontal, scroll-snap each step
+     into view as the user swipes. */
+  .timeline {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 14px;
+    margin-left: calc(-1 * clamp(20px, 5vw, 56px));
+    margin-right: calc(-1 * clamp(20px, 5vw, 56px));
+    padding-left: clamp(20px, 5vw, 56px);
+    padding-right: clamp(20px, 5vw, 56px);
+    gap: 10px;
+  }
+  .step {
+    flex: 0 0 110px;
+    max-width: 110px;
+    scroll-snap-align: start;
+  }
+  .step__arrow {
+    flex: 0 0 auto;
+    font-size: 1.4rem;
   }
   .hero h1 {
     max-width: 100%;
