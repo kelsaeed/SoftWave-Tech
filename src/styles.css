@@ -1957,6 +1957,13 @@ html {
   color: var(--muted);
 }
 
+.wwa-card__summary {
+  margin: 0 0 22px;
+  color: var(--muted-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .wwa-card__hint {
   margin: 22px 0 0;
   font-size: 0.82rem;
@@ -1996,12 +2003,12 @@ html {
   font-size: 1.15rem;
 }
 
-/* Bar chart: two vertical bars side by side (before / after) */
+/* Bar chart: two vertical bars side by side (before / after) with label
+   and numeric value below each bar. The `.wwa-bar-track` gives the bar a
+   fixed-height arena so the `--h: NN%` value renders predictably. */
 .wwa-bars {
   display: flex;
-  gap: 18px;
-  height: 110px;
-  align-items: flex-end;
+  gap: 20px;
   width: 100%;
   justify-content: center;
 }
@@ -2011,9 +2018,14 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  flex: 0 0 36px;
-  height: 100%;
-  justify-content: flex-end;
+  flex: 0 0 42px;
+}
+
+.wwa-bar-track {
+  width: 100%;
+  height: 92px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .wwa-bar {
@@ -2021,7 +2033,12 @@ html {
   height: var(--h, 0%);
   border-radius: 6px 6px 2px 2px;
   position: relative;
-  transition: height 1.4s var(--ease-out);
+  animation: wwa-bar-grow 1.4s var(--ease-out) both;
+}
+
+@keyframes wwa-bar-grow {
+  from { height: 0; }
+  to { height: var(--h, 0%); }
 }
 
 .wwa-bar--before {
@@ -2052,6 +2069,16 @@ html {
   font-size: 0.7rem;
   color: var(--muted);
   letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wwa-bar__value {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-top: -2px;
 }
 
 /* Delta badge below the chart */
@@ -2084,10 +2111,35 @@ html {
   font-weight: 500;
 }
 
-/* Responsive: stack metrics vertically on small screens */
+/* Responsive — mobile case studies sit side-by-side in a horizontally
+   swipeable row instead of stacking. Metrics inside each card stay in
+   a 3-column row at all sizes, just smaller. */
 @media (max-width: 720px) {
-  .wwa-metrics {
-    grid-template-columns: 1fr;
+  .wwa-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    gap: 14px;
+    padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* Bleed to viewport edges so the swipe arc feels continuous */
+    margin-left: calc(-1 * clamp(20px, 5vw, 56px));
+    margin-right: calc(-1 * clamp(20px, 5vw, 56px));
+    padding-left: clamp(20px, 5vw, 56px);
+    padding-right: clamp(20px, 5vw, 56px);
+    scrollbar-width: thin;
+  }
+  .wwa-grid > * {
+    flex: 0 0 88%;
+    min-width: 290px;
+    max-width: 340px;
+    scroll-snap-align: start;
+  }
+  .wwa-card {
+    width: 100%;
+    padding: 20px 18px 22px;
   }
   .wwa-card__head {
     flex-direction: column;
@@ -2098,5 +2150,45 @@ html {
     flex-direction: column;
     text-align: center;
     align-items: center;
+  }
+  /* keep metrics side-by-side on mobile, just smaller */
+  .wwa-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .wwa-metric {
+    padding: 12px 4px;
+    gap: 8px;
+  }
+  .wwa-metric__head {
+    flex-direction: column;
+    gap: 3px;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+  .wwa-metric__icon {
+    font-size: 1rem;
+  }
+  .wwa-bars {
+    gap: 10px;
+  }
+  .wwa-bar-wrap {
+    flex: 0 0 24px;
+    gap: 4px;
+  }
+  .wwa-bar-track {
+    height: 64px;
+  }
+  .wwa-bar__label {
+    font-size: 0.58rem;
+  }
+  .wwa-bar__value {
+    font-size: 0.66rem;
+  }
+  .wwa-metric__delta-num {
+    font-size: 1rem;
+  }
+  .wwa-metric__delta-text {
+    font-size: 0.58rem;
   }
 }
