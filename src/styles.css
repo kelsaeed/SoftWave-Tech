@@ -834,9 +834,21 @@ html {
   overflow: hidden;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.03));
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  /* Fully self-sufficient glass — no `backdrop-filter`. Chrome silently
+     downgrades or skips backdrop-filter rendering when there's a playing
+     <video> behind the element, which is the entire cause of "glassy for
+     1 second, then reverts" — the cards were depending on backdrop-filter
+     for their look, and it was flickering between phases. With the filter
+     removed, every glass surface looks IDENTICAL across the page lifecycle:
+     poster phase, video phase, scrolling, anything.
+     The layered gradients do all the work:
+       - Diagonal frost sheen for the glass body (capped at 22% so it
+         doesn't read as a milky white plate)
+       - Aqua bottom-glow that anchors the cards to the ocean theme and
+         gives them depth without needing real blur of the bg */
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.07)),
+    radial-gradient(150% 100% at 50% 110%, rgba(31, 127, 140, 0.2), transparent 60%);
   box-shadow: 0 24px 56px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.42);
   padding: 32px;
   transform: perspective(900px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg)) translateZ(0);
@@ -914,7 +926,9 @@ html {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 22px;
-  align-items: stretch;
+  /* let each column take its natural height — without this, .people stretches
+     to match the taller figures column and the person cards look oversized */
+  align-items: start;
 }
 
 .people {
@@ -923,50 +937,44 @@ html {
   gap: 18px;
 }
 
-/* Compact, lightly-frosted person cards: small footprint, more transparent
-   than the default .glass tint, with dark slate text so the identity reads
-   crisply against the ocean backdrop. */
+/* Compact person cards — inherit the exact .glass treatment used by the
+   figures next to them (same tint, same border, same backdrop-filter) so
+   the two columns read as one family. Only size and text-size are tuned;
+   nothing else is overridden. */
 .person {
-  padding: 20px 22px;
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.28));
-  border-color: rgba(255, 255, 255, 0.55);
-  color: #051a23;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  padding: 16px 18px;
 }
 
 .person h3 {
-  color: #051620;
-  font-size: 1.08rem;
-  margin-bottom: 6px;
+  font-size: 1rem;
+  margin-bottom: 4px;
 }
 
 .person p {
-  color: #1a3a48;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   line-height: 1.55;
 }
 
 .person__role {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  /* darker aqua reads on a light card; var(--accent) was too light here */
-  color: var(--accent-deep);
-  margin-bottom: 10px;
+  color: var(--accent);
+  margin-bottom: 6px;
 }
 
 .person__avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--accent-ink);
   background: linear-gradient(140deg, var(--accent-bright), var(--accent-deep));
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .about-figures {
@@ -975,23 +983,33 @@ html {
   gap: 18px;
 }
 
+/* Pill-shaped figures — a water-capsule silhouette that breaks the
+   rectangle grid of the rest of the section and ties the stats to the
+   ocean theme. Horizontal padding is bumped so the number and label
+   sit clear of the rounded ends. */
 .figure {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 14px;
-  padding: 22px 26px;
+  padding: 22px 38px;
+  border-radius: 999px;
 }
 
 .figure__num {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.4vw, 2.4rem);
   font-weight: 700;
+  /* Soft aqua glow makes the big number pop without changing its color. */
+  text-shadow: 0 0 22px rgba(155, 243, 238, 0.35);
 }
 
 .figure__label {
-  color: var(--muted);
+  /* Lifted from muted-gray to bright aqua so the description reads as
+     part of the brand palette and pops visually. */
+  color: var(--accent-bright);
   font-size: 0.92rem;
+  font-weight: 500;
   text-align: right;
   max-width: 16ch;
 }
