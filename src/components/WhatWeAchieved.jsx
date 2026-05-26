@@ -26,9 +26,9 @@ import Reveal from './Reveal.jsx'
 const caseStudies = [
   {
     id: 'study-1',
-    name: 'Logistics Operations Platform',
-    industry: 'Logistics & Supply Chain',
-    summary: 'Custom SaaS dashboard replacing manual spreadsheet tracking and route planning.',
+    name: 'Logistics Ops Platform',
+    industry: 'Logistics',
+    summary: 'SaaS dashboard replacing manual tracking.',
     metrics: [
       { label: 'Process Time', icon: '⏱️', before: 40, after: 12, suffix: 'hrs/wk' },
       { label: 'Operating Cost', icon: '💰', before: 8400, after: 3200, prefix: '$' },
@@ -37,9 +37,9 @@ const caseStudies = [
   },
   {
     id: 'study-2',
-    name: 'Retail Loyalty Mobile App',
-    industry: 'E-Commerce & Retail',
-    summary: 'Flutter cross-platform app with automated reward workflows and in-app payments.',
+    name: 'Retail Loyalty App',
+    industry: 'E-Commerce',
+    summary: 'Flutter app with automated rewards.',
     metrics: [
       { label: 'Process Time', icon: '⏱️', before: 28, after: 8, suffix: 'hrs/wk' },
       { label: 'Operating Cost', icon: '💰', before: 5200, after: 2100, prefix: '$' },
@@ -48,9 +48,9 @@ const caseStudies = [
   },
   {
     id: 'study-3',
-    name: 'Marketing Automation Suite',
-    industry: 'Marketing & Lead Generation',
-    summary: 'n8n-powered lead qualification, scoring, and CRM sync workflow.',
+    name: 'Marketing Automation',
+    industry: 'Lead Generation',
+    summary: 'n8n lead qualification + CRM sync.',
     metrics: [
       { label: 'Process Time', icon: '⏱️', before: 22, after: 5, suffix: 'hrs/wk' },
       { label: 'Operating Cost', icon: '💰', before: 3800, after: 1200, prefix: '$' },
@@ -71,23 +71,20 @@ export default function WhatWeAchieved() {
       <span id="what-we-achieved" className="section-anchor" aria-hidden="true" />
 
       <Reveal className="section-head">
-        <p className="kicker">Client Outcomes</p>
+        <p className="kicker">Outcomes</p>
         <h2>
           What We <span className="grad">Achieved.</span>
         </h2>
         <p className="section-lead">
-          Measurable client outcomes from completed software development projects.
-          Each case study tracks before-vs-after improvements in process time,
-          operating cost, and operational headcount.
+          Time, cost, and headcount — before vs after.
         </p>
       </Reveal>
 
       <Reveal className="wwa-notice" delay={80}>
         <span className="wwa-notice__icon" aria-hidden="true">📊</span>
         <p>
-          <strong>Sample case studies shown below.</strong> Verified real-client
-          outcomes will replace these as projects complete and clients sign off
-          on releasing their figures.
+          <strong>Sample data.</strong> Real client metrics will replace these
+          as projects complete.
         </p>
       </Reveal>
 

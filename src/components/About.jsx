@@ -19,14 +19,10 @@ export default function About() {
     <section className="section" data-nav="about">
       <span id="about" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
-        <p className="kicker">About SoftWaveTech</p>
-        <h2>Software Development Studio Specializing in Mobile, Web, Automation &amp; SaaS.</h2>
+        <p className="kicker">About</p>
+        <h2>A studio of <span className="grad">two.</span></h2>
         <p className="section-lead">
-          SoftWaveTech is a software development agency based in Egypt with
-          clients across MENA and worldwide. We deliver Flutter mobile app
-          development, custom web development, n8n workflow automation, and
-          SaaS product development — every project handled end-to-end by
-          experienced developers, with direct client-to-developer communication.
+          Egypt-based, worldwide clients. Mobile, web, automation, SaaS.
         </p>
       </Reveal>
 
@@ -34,25 +30,15 @@ export default function About() {
         <Reveal className="people" dir="left">
           <GlassCard className="person">
             <div className="person__avatar">K</div>
-            <p className="person__role">Flutter &amp; Web Development</p>
+            <p className="person__role">Flutter &amp; Web</p>
             <h3>Khaled</h3>
-            <p>
-              Flutter Mobile App Developer &amp; Web Development Specialist.
-              Builds cross-platform Flutter applications for iOS and Android,
-              and custom websites using HTML, CSS, and JavaScript with proven
-              mobile and web development expertise.
-            </p>
+            <p>Cross-platform Flutter apps. HTML, CSS, JavaScript.</p>
           </GlassCard>
           <GlassCard className="person">
             <div className="person__avatar">H</div>
-            <p className="person__role">Automation &amp; SaaS Development</p>
+            <p className="person__role">Automation &amp; SaaS</p>
             <h3>Hams</h3>
-            <p>
-              n8n Automation Specialist &amp; SaaS Developer. Designs and
-              implements n8n workflow automations, Meta API integrations, and
-              custom SaaS products. Builds software systems and business
-              automation that streamline operations end-to-end.
-            </p>
+            <p>n8n workflows, Meta integrations, SaaS products.</p>
           </GlassCard>
         </Reveal>
 

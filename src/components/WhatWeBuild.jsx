@@ -43,24 +43,23 @@ const categories = [
   {
     id: 'saas',
     title: 'SaaS Platforms',
-    blurb:
-      'Cloud-based SaaS platforms and subscription products engineered for scale, with multi-tenant architecture and end-to-end delivery.',
+    blurb: 'Cloud SaaS platforms engineered for scale.',
     longDescription:
-      'We design, build, and deploy custom SaaS platforms for businesses of every size. From multi-tenant architecture to billing, user management, role-based access, and analytics dashboards — our SaaS development covers the full software-as-a-service product lifecycle from MVP to production.',
+      'Custom SaaS platforms — multi-tenant architecture, billing, user management, role-based access, analytics dashboards. MVP to production.',
     projects: [
       {
         id: 'inventory-flow',
-        title: 'InventoryFlow — Inventory SaaS',
+        title: 'InventoryFlow',
         description:
-          'Multi-tenant SaaS platform for real-time inventory management and supply chain automation. Built with React, Node.js, and PostgreSQL, with role-based access, live dashboards, and Stripe-powered subscription billing.',
+          'Multi-tenant SaaS for inventory + supply chain. Role-based access, live dashboards, Stripe billing.',
         images: [],
         tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
       },
       {
         id: 'team-pulse',
-        title: 'TeamPulse — Team Productivity SaaS',
+        title: 'TeamPulse',
         description:
-          'SaaS team productivity dashboard with project tracking, time logs, and automated reporting. Customizable workflows, Slack integration, and a public API for client extensions.',
+          'Team productivity dashboard. Project tracking, time logs, Slack integration.',
         images: [],
         tech: ['Next.js', 'Prisma', 'Redis', 'Slack API'],
       },
@@ -69,24 +68,23 @@ const categories = [
   {
     id: 'flutter',
     title: 'Flutter Applications',
-    blurb:
-      'Cross-platform Flutter mobile apps for iOS and Android — native-feel performance and end-to-end mobile app development.',
+    blurb: 'Cross-platform iOS + Android apps in Flutter.',
     longDescription:
-      'We build cross-platform mobile applications using Flutter — write once, ship beautifully on iOS and Android. From early-stage MVPs to full-scale consumer apps, our Flutter development covers UX, integrations, App Store and Google Play deployment, and post-launch updates.',
+      'Flutter mobile apps for iOS and Android. UX, integrations, App Store and Google Play deployment, post-launch updates.',
     projects: [
       {
         id: 'fit-track',
-        title: 'FitTrack — Cross-Platform Fitness App',
+        title: 'FitTrack',
         description:
-          'Cross-platform Flutter fitness tracker with workout planning, progress charts, and wearable device integration via HealthKit and Google Fit. Available on iOS and Android.',
+          'Flutter fitness tracker. Workout plans, progress charts, wearable sync.',
         images: [],
         tech: ['Flutter', 'Firebase', 'HealthKit'],
       },
       {
         id: 'deliver-mate',
-        title: 'DeliverMate — Food Delivery App',
+        title: 'DeliverMate',
         description:
-          'Food delivery Flutter mobile app with live order tracking, in-app payments via Stripe, and Google Maps route optimization for delivery drivers.',
+          'Food delivery app. Live tracking, in-app payments, route optimization.',
         images: [],
         tech: ['Flutter', 'Google Maps', 'Stripe', 'Firebase'],
       },
@@ -95,24 +93,23 @@ const categories = [
   {
     id: 'websites',
     title: 'Websites',
-    blurb:
-      'Custom websites built with HTML, CSS, and JavaScript — fast, accessible, SEO-ready landing pages, portfolios, and storefronts.',
+    blurb: 'Fast, accessible, SEO-ready websites in HTML/CSS/JS.',
     longDescription:
-      'Custom web development for businesses, creators, and brands. We build marketing sites, landing pages, portfolios, e-commerce storefronts, and web applications using modern HTML, CSS, and JavaScript — optimized for performance, SEO, and accessibility from day one.',
+      'Marketing sites, landing pages, portfolios, storefronts, web apps. HTML, CSS, JavaScript. Optimized for performance, SEO, accessibility.',
     projects: [
       {
         id: 'boutique-brand',
-        title: 'Boutique Brand — E-Commerce Site',
+        title: 'Boutique Brand',
         description:
-          'Custom e-commerce storefront for a fashion boutique. Product galleries, secure checkout, inventory sync, and SEO-optimized product pages for organic discovery.',
+          'Fashion e-commerce storefront. Galleries, secure checkout, SEO product pages.',
         images: [],
         tech: ['HTML', 'CSS', 'JavaScript', 'Shopify'],
       },
       {
         id: 'architect-portfolio',
-        title: 'Architect Portfolio — Creative Website',
+        title: 'Architect Portfolio',
         description:
-          'Award-winning architect portfolio site with case-study layouts, high-resolution image galleries, and a custom lightweight CMS for project updates.',
+          'Portfolio site with case-study layouts and a lightweight custom CMS.',
         images: [],
         tech: ['JavaScript', 'CSS Grid', 'Custom CMS'],
       },
@@ -121,24 +118,23 @@ const categories = [
   {
     id: 'ai',
     title: 'AI Automations',
-    blurb:
-      'AI-powered automations and intelligent workflows built with n8n, LLMs, and Meta tooling that quietly remove busywork.',
+    blurb: 'AI workflows with n8n, LLMs, and Meta tooling.',
     longDescription:
-      'We design AI automation systems that connect your tools, agents, and data. From n8n workflow automation to AI-driven lead qualification, automated content generation pipelines, and Meta API integrations — we build automations that quietly take operational load off your team and scale with your business.',
+      'n8n automation, AI lead qualification, content generation pipelines, Meta API integrations. Removes operational busywork.',
     projects: [
       {
         id: 'lead-capture-ai',
-        title: 'LeadCapture AI — Lead Qualification',
+        title: 'LeadCapture AI',
         description:
-          'AI-powered lead qualification system that scores incoming inquiries, drafts personalized follow-up emails, and syncs structured data to HubSpot CRM via n8n workflows.',
+          'AI lead scoring + follow-up emails. Syncs to HubSpot via n8n.',
         images: [],
         tech: ['n8n', 'OpenAI', 'HubSpot'],
       },
       {
         id: 'content-bot',
-        title: 'ContentBot — AI Content Pipeline',
+        title: 'ContentBot',
         description:
-          'End-to-end AI content workflow: idea generation, draft writing, image creation, and scheduled multi-platform publishing across Meta, X, and LinkedIn.',
+          'AI content pipeline. Ideas, drafts, images, multi-platform publishing.',
         images: [],
         tech: ['n8n', 'OpenAI', 'Meta APIs'],
       },
@@ -184,14 +180,12 @@ export default function WhatWeBuild() {
       <span id="what-we-build" className="section-anchor" aria-hidden="true" />
 
       <Reveal className="section-head">
-        <p className="kicker">Our Portfolio</p>
+        <p className="kicker">Portfolio</p>
         <h2>
           What We <span className="grad">Build.</span>
         </h2>
         <p className="section-lead">
-          Explore our software development work across four specialties: SaaS
-          platforms, Flutter mobile applications, custom websites, and AI
-          automation systems. Click any category to see live projects.
+          Four specialties. Click a category to see projects.
         </p>
       </Reveal>
 

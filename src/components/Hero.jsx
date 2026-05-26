@@ -71,11 +71,8 @@ export default function Hero() {
         </h1>
 
         <p className="lead">
-          SoftWaveTech is a professional software development studio delivering
-          Flutter mobile app development, custom web development (HTML, CSS,
-          JavaScript), n8n workflow automation, and SaaS product development.
-          Based in Egypt, serving clients across MENA and worldwide with
-          end-to-end software delivery.
+          Flutter apps, web, n8n automation, SaaS — built end-to-end in Egypt,
+          delivered worldwide.
         </p>
 
         <div className="hero-actions">

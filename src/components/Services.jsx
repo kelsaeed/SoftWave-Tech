@@ -32,17 +32,10 @@ export default function Services() {
     <section className="section" data-nav="services">
       <span id="services" className="section-anchor" aria-hidden="true" />
       <Reveal className="section-head">
-        <p className="kicker">Why Choose SoftWaveTech</p>
+        <p className="kicker">Why Us</p>
         <h2>
-          Built for Reliable Software <span className="grad">Development Partnerships.</span>
+          What every project <span className="grad">gets.</span>
         </h2>
-        <p className="section-lead">
-          Beyond the technical work — Flutter apps, web development, n8n
-          automation, and SaaS — every project we take on comes with the
-          commitments that actually matter to clients: clear communication,
-          transparent pricing, fast response times, and full end-to-end
-          delivery from discovery through long-term support.
-        </p>
       </Reveal>
 
       <div className="bento">

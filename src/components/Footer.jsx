@@ -18,7 +18,7 @@ export default function Footer() {
             SoftWave<span>Tech</span>
           </div>
           <p className="footer__tag">
-            Flutter App Development &middot; Web Development &middot; n8n Automation &middot; SaaS Solutions — Egypt &amp; Global.
+            Flutter &middot; Web &middot; Automation &middot; SaaS — Egypt &amp; Global.
           </p>
         </div>
 

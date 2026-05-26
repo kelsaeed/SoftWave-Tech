@@ -40,14 +40,12 @@ export default function Contact() {
       <span id="contact" className="section-anchor" aria-hidden="true" />
       <Reveal dir="scale">
         <GlassCard className="contact-card" tilt={3}>
-          <p className="kicker">Contact SoftWaveTech</p>
+          <p className="kicker">Contact</p>
           <h2>
-            Hire Flutter, Web, Automation <span className="grad">&amp; SaaS Developers.</span>
+            Start a <span className="grad">project.</span>
           </h2>
           <p className="section-lead">
-            Looking for a software development partner for your Flutter app,
-            web, n8n automation, or SaaS project? Tell us a bit about it
-            below — we reply within one business day.
+            Tell us about your project. We reply within one business day.
           </p>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
@@ -97,7 +95,7 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 rows={4}
-                placeholder="Tell us what you're building, the rough scope, and any deadlines you have in mind."
+                placeholder="What you're building, scope, deadlines."
               />
             </label>
 
@@ -110,8 +108,7 @@ export default function Contact() {
 
             {status === 'sent' && (
               <p className="contact-form__status" role="status">
-                Your email client should now open with your message ready to send.
-                If it doesn't,{' '}
+                Email client opened. If not,{' '}
                 <a href={`mailto:${RECIPIENT}`} className="contact-form__direct">
                   email us directly
                 </a>
